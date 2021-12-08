@@ -1,4 +1,5 @@
 import 'package:darts/pages/game_page.dart';
+import 'package:darts/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -59,7 +60,8 @@ class _IntroPageState extends State<IntroPage> {
             alignment: Alignment.bottomRight,
             padding: EdgeInsets.all(50),
             decoration: BoxDecoration(),
-            child: ElevatedButton(
+            child:
+            ElevatedButton(
               style: ElevatedButton.styleFrom(
                 primary: Colors.black,
                 shape: RoundedRectangleBorder(
@@ -69,7 +71,7 @@ class _IntroPageState extends State<IntroPage> {
               ),
               onPressed: () {
                 _controller.dispose();
-                Navigator.pushReplacementNamed(context, GamePage.id);
+                Navigator.pushReplacementNamed(context, HomePage.id);
               },
               child: Text(
                 "Play",
@@ -85,3 +87,5 @@ class _IntroPageState extends State<IntroPage> {
     );
   }
 }
+
+

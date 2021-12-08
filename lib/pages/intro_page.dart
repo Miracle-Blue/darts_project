@@ -19,7 +19,7 @@ class _IntroPageState extends State<IntroPage> {
     // TODO: implement initState
     super.initState();
 
-    _controller = VideoPlayerController.asset("assets/videos/intro_video.mp4")
+    _controller = VideoPlayerController.asset("assets/videos/intro_vid.mp4")
       ..initialize().then((value) {
         _controller.play();
         _controller.setPlaybackSpeed(1.7);
@@ -37,15 +37,21 @@ class _IntroPageState extends State<IntroPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(255, 254, 255, 1),
       body: Stack(
         children: [
-          SizedBox.expand(
-            child: FittedBox(
-              fit: BoxFit.cover,
-              child: SizedBox(
-                width: _controller.value.size.width,
-                height: _controller.value.size.height,
-                child: VideoPlayer(_controller),
+          Transform.translate(
+            offset: Offset(-70.0, 0.0),
+            child: Transform.rotate(
+              angle: 0.0,
+              child: SizedBox.expand(
+                child: FittedBox(
+                  child: SizedBox(
+                    width: _controller.value.size.width,
+                    height: _controller.value.size.height,
+                    child: VideoPlayer(_controller),
+                  ),
+                ),
               ),
             ),
           ),

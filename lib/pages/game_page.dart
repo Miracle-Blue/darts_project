@@ -15,13 +15,20 @@ class _GamePageState extends State<GamePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(
-          "Game Page",
-          style: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.w700,
-            color: Colors.black,
-          ),
+        child: Column(
+          children: [
+            Container(
+
+            ),
+            Text(
+              "Game Page",
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.w700,
+                color: Colors.black,
+              ),
+            ),
+          ],
         ),
       ),
     );

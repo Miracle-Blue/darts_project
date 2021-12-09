@@ -210,8 +210,9 @@ class _GamePageState extends State<GamePage> {
                     ),
                   ),
                 ),
-                Spacer(),
+
                 Expanded(
+                  flex: 5,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.end,

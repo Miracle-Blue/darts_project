@@ -1,5 +1,4 @@
 import 'package:darts/pages/game_page.dart';
-import 'package:darts/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'dart:async';
@@ -91,7 +90,7 @@ class _IntroPageState extends State<IntroPage> {
                     onPressed: () {
                       _timer.cancel();
                       _controller.dispose();
-                      Navigator.pushReplacementNamed(context, HomePage.id);
+                      Navigator.pushReplacementNamed(context, GamePage.id);
                     },
                     child: Text(
                       "Play",

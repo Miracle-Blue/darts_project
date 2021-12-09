@@ -28,6 +28,7 @@ class _GamePageState extends State<GamePage> {
     print("On tapped");
     Timer.periodic(const Duration(microseconds: 100), (timer) {
       setState(() {
+        //
         // index++;
         // dartY -= 0.005;
         // dartX -= (dartX-dartRanX)/100;

@@ -24,7 +24,7 @@ class _GamePageState extends State<GamePage> {
   double dartRanY =
       -0.5; //+ pow(-1, Random().nextInt(10)) * Random().nextDouble();
   int index = 1;
-   int p  = 15;
+  int point = 15;
 
   void shoot() {
     print("On tapped");
@@ -46,32 +46,32 @@ class _GamePageState extends State<GamePage> {
     });
     ra = sqrt(pow(((-0.4) - (dartRanY)), 2) + pow(((-0.06) - (dartRanX)), 2));
     if (ra <= 0.085) {
-      p = 10;
-      aa(10);
+      point = 10;
+      scoreAddFunction(10);
     } else if (ra > 0.085 && ra <= 0.17) {
-      p = 8;
-      aa(8);
+      point = 8;
+      scoreAddFunction(8);
     } else if (ra > 0.17 && ra <= 0.27) {
-      p = 6;
-      aa(6);
+      point = 6;
+      scoreAddFunction(6);
     } else if (ra > 0.27 && ra <= 0.38) {
-      p = 4;
-      aa(4);
+      point = 4;
+      scoreAddFunction(4);
     } else if (ra > 0.38 && ra <= 0.48) {
-      p = 2;
-      aa(2);
+      point = 2;
+      scoreAddFunction(2);
     } else if (ra > 0.48 && ra <= 0.69) {
-      p = 1;
-      aa(1);
+      point = 1;
+      scoreAddFunction(1);
     } else {
-      p = 0;
-      aa(0);
+      point = 0;
+      scoreAddFunction(0);
     }
   }
 
   List list = [];
 
-  void aa(int a) {
+  void scoreAddFunction(int a) {
     list.add(a);
   }
 
@@ -79,7 +79,7 @@ class _GamePageState extends State<GamePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    aa(p);
+    scoreAddFunction(point);
   }
 
   static TextStyle _textStyle(double size) {
@@ -304,7 +304,7 @@ Widget addListItem(List list, int index) {
 
 Widget addListDartsArrow(List list, int number) {
   return Expanded(
-    child: list.length >= number+1
+    child: list.length >= number + 1
         ? Text("")
         : Image(
             height: 40,

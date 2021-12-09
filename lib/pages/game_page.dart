@@ -156,59 +156,61 @@ class _GamePageState extends State<GamePage> {
                 ),
               ),
               Spacer(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Color.fromRGBO(240, 30, 12, 0.92),
-                          Color.fromRGBO(240, 100, 12, 0.80)
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Color.fromRGBO(240, 30, 12, 0.92),
+                            Color.fromRGBO(240, 100, 12, 0.80)
+                          ],
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      margin: EdgeInsets.all(10),
+                      height: 300,
+                      width: 60,
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 5,
+                          ),
+                          addListDartsArrow(list,1),
+                          addListDartsArrow(list,2),
+                          addListDartsArrow(list,3),
+                          addListDartsArrow(list,4),
+                          addListDartsArrow(list,5),
+                          addListDartsArrow(list,6),
+                          addListDartsArrow(list,7),
+                          addListDartsArrow(list,8),
+                          addListDartsArrow(list,9),
+                          addListDartsArrow(list,10),
+                          SizedBox(
+                            height: 5,
+                          ),
                         ],
                       ),
-                      borderRadius: BorderRadius.circular(10),
                     ),
-                    margin: EdgeInsets.all(10),
-                    height: 300,
-                    width: 60,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 5,
+                    GestureDetector(
+                      onTap: (){},
+                      child: Container(
+                        margin: EdgeInsets.all(10),
+                        child: Image(
+                          height: 80,
+                          width: 80,
+                          color: Colors.yellow,
+                          image: AssetImage("assets/images/throw_icon.png"),
                         ),
-                        addListDartsArrow(list,1),
-                        addListDartsArrow(list,2),
-                        addListDartsArrow(list,3),
-                        addListDartsArrow(list,4),
-                        addListDartsArrow(list,5),
-                        addListDartsArrow(list,6),
-                        addListDartsArrow(list,7),
-                        addListDartsArrow(list,8),
-                        addListDartsArrow(list,9),
-                        addListDartsArrow(list,10),
-                        SizedBox(
-                          height: 5,
-                        ),
-                      ],
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: (){},
-                    child: Container(
-                      margin: EdgeInsets.all(10),
-                      child: Image(
-                        height: 80,
-                        width: 80,
-                        color: Colors.yellow,
-                        image: AssetImage("assets/images/throw_icon.png"),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               SizedBox(
                 height: 20,

@@ -18,9 +18,10 @@ class MyApp extends StatelessWidget {
       ),
       home: IntroPage(),
       routes: {
+
         IntroPage.id: (context) => IntroPage(),
         GamePage.id: (context) => GamePage(),
-        HomePage.id: (context) => HomePage(),
+
       },
     );
   }

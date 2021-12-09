@@ -71,7 +71,7 @@ class _IntroPageState extends State<IntroPage> {
               ),
               onPressed: () {
                 _controller.dispose();
-                Navigator.pushReplacementNamed(context, HomePage.id);
+                Navigator.pushReplacementNamed(context, GamePage.id);
               },
               child: Text(
                 "Play",

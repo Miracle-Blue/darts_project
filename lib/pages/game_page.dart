@@ -19,10 +19,10 @@ class _GamePageState extends State<GamePage> {
   double sizeW = 120.0;
   double sizeH = 120.0;
   double ra = 0;
-  double dartRanX = pow(-1, Random().nextInt(10)) * Random().nextDouble();
-  double dartRanY = 0.5 - pow(-1, Random().nextInt(10)) * Random().nextDouble();
+  double dartRanX =  0.2; //pow(-1, Random().nextInt(10)) * Random().nextDouble();
+  double dartRanY = -0.5 ;//+ pow(-1, Random().nextInt(10)) * Random().nextDouble();
   int index = 1;
-  int point = 0;
+  int p=0;
 
   void shoot() {
     print("On tapped");
@@ -45,35 +45,34 @@ class _GamePageState extends State<GamePage> {
     });
     ra = sqrt(pow(((-0.4) - (dartRanY)), 2) + pow(((-0.06) - (dartRanX)), 2));
     if (ra <= 0.085) {
-      point = 10;
+      p = 10;aa(10);
     } else if (ra > 0.085 && ra <= 0.17) {
-      point = 8;
+       p = 8; aa(8);
     } else if (ra > 0.17 && ra <= 0.27) {
-      point = 6;
+      p = 6;aa(6);
     } else if (ra > 0.27 && ra <= 0.38) {
-      point = 4;
+      p = 4;aa(4);
     } else if (ra > 0.38 && ra <= 0.48) {
-      point = 2;
+      p = 2;aa(2);
     } else if (ra > 0.48 && ra <= 0.69) {
-      point = 1;
+      p = 1;aa(1);
     } else {
-
-
-      point = 0;
+      p = 0;aa(0);
     }
   }
 
   List list = [];
 
-  void aa() {
-    list.add(point);
+  void aa(int a) {
+
+    list.add(a);
   }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    aa();
+    aa(p);
   }
 
   static TextStyle _textStyle(double size) {
@@ -85,7 +84,7 @@ class _GamePageState extends State<GamePage> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    print(list);
+
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -254,7 +253,6 @@ class _GamePageState extends State<GamePage> {
                       ),
                       GestureDetector(
                         onTap: () {
-
                           shoot();
                         },
                         child: Container(

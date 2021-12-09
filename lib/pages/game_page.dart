@@ -20,7 +20,7 @@ class _GamePageState extends State<GamePage> {
   double sizeH = 120.0;
   double ra = 0;
   double dartRanX = pow(-1, Random().nextInt(10)) * Random().nextDouble();
-  double dartRanY = -Random().nextDouble();
+  double dartRanY = pow(-1, Random().nextInt(10)) * Random().nextDouble();
   int index = 1;
   int achko = 0;
 

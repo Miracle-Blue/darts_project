@@ -83,12 +83,14 @@ class _GamePageState extends State<GamePage> {
 
   @override
   Widget build(BuildContext context) {
-
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    print(list);
     return SafeArea(
       child: Scaffold(
         body: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
+          width: width,
+          height: height,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assets/images/back_2.jpg"),
@@ -295,14 +297,14 @@ Widget addListItem(List list, int index) {
   ));
 }
 
-Widget addListDartsArrow(List list, int number) {
+Widget addListDartsArrow(List list ,int number) {
   return Expanded(
-    child: list.length >= number
-        ? Text("")
-        : Image(
-            height: 40,
-            width: 40,
-            image: AssetImage("assets/images/darts_arrow.png"),
-          ),
+    child: list.length>=number?
+    Text(""):
+    Image(
+      height: 40,
+      width: 40,
+      image: AssetImage("assets/images/darts_arrow.png"),
+    ),
   );
 }

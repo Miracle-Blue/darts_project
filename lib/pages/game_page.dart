@@ -19,16 +19,17 @@ class _GamePageState extends State<GamePage> {
   double sizeW = 120.0;
   double sizeH = 120.0;
   double ra = 0;
-  double dartRanX =  0.2; //pow(-1, Random().nextInt(10)) * Random().nextDouble();
-  double dartRanY = -0.5 ;//+ pow(-1, Random().nextInt(10)) * Random().nextDouble();
+  double dartRanX =
+      0.2; //pow(-1, Random().nextInt(10)) * Random().nextDouble();
+  double dartRanY =
+      -0.5; //+ pow(-1, Random().nextInt(10)) * Random().nextDouble();
   int index = 1;
-  int p=0;
+   int p  = 15;
 
   void shoot() {
     print("On tapped");
     Timer.periodic(const Duration(microseconds: 100), (timer) {
       setState(() {
-        //
         // index++;
         // dartY -= 0.005;
         // dartX -= (dartX-dartRanX)/100;
@@ -45,26 +46,32 @@ class _GamePageState extends State<GamePage> {
     });
     ra = sqrt(pow(((-0.4) - (dartRanY)), 2) + pow(((-0.06) - (dartRanX)), 2));
     if (ra <= 0.085) {
-      p = 10;aa(10);
+      p = 10;
+      aa(10);
     } else if (ra > 0.085 && ra <= 0.17) {
-       p = 8; aa(8);
+      p = 8;
+      aa(8);
     } else if (ra > 0.17 && ra <= 0.27) {
-      p = 6;aa(6);
+      p = 6;
+      aa(6);
     } else if (ra > 0.27 && ra <= 0.38) {
-      p = 4;aa(4);
+      p = 4;
+      aa(4);
     } else if (ra > 0.38 && ra <= 0.48) {
-      p = 2;aa(2);
+      p = 2;
+      aa(2);
     } else if (ra > 0.48 && ra <= 0.69) {
-      p = 1;aa(1);
+      p = 1;
+      aa(1);
     } else {
-      p = 0;aa(0);
+      p = 0;
+      aa(0);
     }
   }
 
   List list = [];
 
   void aa(int a) {
-
     list.add(a);
   }
 
@@ -201,14 +208,13 @@ class _GamePageState extends State<GamePage> {
                         ),
                         Expanded(
                             child: Text(
-                          "${list.reduce((value, element) => value + element)}",
+                          "${list.reduce((value, element) => value + element) - 15}",
                           style: _textStyle(13),
                         )),
                       ],
                     ),
                   ),
                 ),
-
                 Expanded(
                   flex: 5,
                   child: Row(
@@ -291,19 +297,19 @@ class _GamePageState extends State<GamePage> {
 Widget addListItem(List list, int index) {
   return Expanded(
       child: Text(
-    "${list.length >= index ? list[index - 1] : ""}",
+    "${list.length >= index + 1 ? list[index] : ""}",
     style: _GamePageState._textStyle(13),
   ));
 }
 
-Widget addListDartsArrow(List list ,int number) {
+Widget addListDartsArrow(List list, int number) {
   return Expanded(
-    child: list.length>=number?
-    Text(""):
-    Image(
-      height: 40,
-      width: 40,
-      image: AssetImage("assets/images/darts_arrow.png"),
-    ),
+    child: list.length >= number+1
+        ? Text("")
+        : Image(
+            height: 40,
+            width: 40,
+            image: AssetImage("assets/images/darts_arrow.png"),
+          ),
   );
 }

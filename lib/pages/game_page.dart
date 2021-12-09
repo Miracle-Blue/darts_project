@@ -20,9 +20,9 @@ class _GamePageState extends State<GamePage> {
   double sizeH = 120.0;
   double ra = 0;
   double dartRanX = pow(-1, Random().nextInt(10)) * Random().nextDouble();
-  double dartRanY = pow(-1, Random().nextInt(10)) * Random().nextDouble();
+  double dartRanY = 0.5 - pow(-1, Random().nextInt(10)) * Random().nextDouble();
   int index = 1;
-  int achko = 0;
+  int point = 0;
 
   void shoot() {
     print("On tapped");
@@ -45,29 +45,28 @@ class _GamePageState extends State<GamePage> {
     });
     ra = sqrt(pow(((-0.4) - (dartRanY)), 2) + pow(((-0.06) - (dartRanX)), 2));
     if (ra <= 0.085) {
-      achko = 10;
+      point = 10;
     } else if (ra > 0.085 && ra <= 0.17) {
-      achko = 8;
+      point = 8;
     } else if (ra > 0.17 && ra <= 0.27) {
-      achko = 6;
+      point = 6;
     } else if (ra > 0.27 && ra <= 0.38) {
-      achko = 4;
+      point = 4;
     } else if (ra > 0.38 && ra <= 0.48) {
-      achko = 2;
+      point = 2;
     } else if (ra > 0.48 && ra <= 0.69) {
-      achko = 1;
+      point = 1;
     } else {
 
 
-      achko = 0;
+      point = 0;
     }
   }
 
   List list = [];
 
   void aa() {
-    list.add(5);
-    list.add(6);
+    list.add(point);
   }
 
   @override

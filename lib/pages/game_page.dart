@@ -105,7 +105,6 @@ class _GamePageState extends State<GamePage> {
           ),
           child: Stack(children: [
             Column(
-              // asdsfs
               children: [
                 SizedBox(
                   height: 25,
@@ -292,24 +291,25 @@ class _GamePageState extends State<GamePage> {
       ),
     );
   }
-}
 
-Widget addListItem(List list, int index) {
-  return Expanded(
-      child: Text(
-    "${list.length >= index + 1 ? list[index] : ""}",
-    style: _GamePageState._textStyle(13),
-  ));
-}
+  Widget addListItem(List list, int index) {
+    return Expanded(
+        child: Text(
+          "${list.length >= index + 1 ? list[index] : ""}",
+          style: _GamePageState._textStyle(13),
+        ));
+  }
 
-Widget addListDartsArrow(List list, int number) {
-  return Expanded(
-    child: list.length >= number + 1
-        ? Text("")
-        : Image(
-            height: 40,
-            width: 40,
-            image: AssetImage("assets/images/darts_arrow.png"),
-          ),
-  );
+  Widget addListDartsArrow(List list, int number) {
+    return Expanded(
+      child: list.length >= number + 1
+          ? Text("")
+          : Image(
+        height: 40,
+        width: 40,
+        image: AssetImage("assets/images/darts_arrow.png"),
+      ),
+    );
+  }
+
 }

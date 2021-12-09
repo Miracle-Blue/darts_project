@@ -20,37 +20,32 @@ class HomePage extends StatelessWidget {
           ),
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-              height: 120,
+            Text(
+              "Darts B-14",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 40,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            Container(
-                decoration: BoxDecoration(
-                    color: Color.fromRGBO(193, 149, 34, 0.85),
-                    borderRadius: BorderRadius.circular(20)),
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      top: 8, bottom: 8, right: 20, left: 20),
-                  child: Text(
-                    "Dart B_14",
-                    style: TextStyle(color: Colors.white,fontSize: 35, fontWeight: FontWeight.bold),
-                  ),
-                )),
-            SizedBox(height: 500,),
+            SizedBox(height: 360,),
             ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    primary: Color.fromRGBO(193, 110, 1, 1),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(17)),
-                    padding: EdgeInsets.only(
-                        right: 40, left: 40, top: 10, bottom: 10)),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, GamePage.id);
-                },
-                child: Text(
-                  "Start",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                )),
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.yellow.shade900,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(17)),
+                  padding: EdgeInsets.only(
+                      right: 40, left: 40, top: 10, bottom: 10)),
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, GamePage.id);
+              },
+              child: Text(
+                "Start",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+            ),
           ],
         ),
       ),

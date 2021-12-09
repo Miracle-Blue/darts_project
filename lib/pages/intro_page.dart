@@ -2,6 +2,7 @@ import 'package:darts/pages/game_page.dart';
 import 'package:darts/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+import 'dart:async';
 
 class IntroPage extends StatefulWidget {
   const IntroPage({Key? key}) : super(key: key);
@@ -14,11 +15,23 @@ class IntroPage extends StatefulWidget {
 
 class _IntroPageState extends State<IntroPage> {
   late VideoPlayerController _controller;
+  double _opacity = 0;
+  late Timer _timer;
+
+  void startTimer() {
+    _timer = Timer.periodic(Duration(seconds: 2), (timer) {
+      setState(() {
+        _opacity = 1;
+      });
+    });
+  }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+
+    startTimer();
 
     _controller = VideoPlayerController.asset("assets/videos/intro_vid.mp4")
       ..initialize().then((value) {
@@ -32,6 +45,7 @@ class _IntroPageState extends State<IntroPage> {
   void dispose() {
     // TODO: implement dispose
     super.dispose();
+    _timer.cancel();
     _controller.dispose();
   }
 
@@ -56,36 +70,44 @@ class _IntroPageState extends State<IntroPage> {
               ),
             ),
           ),
-          Container(
-            alignment: Alignment.bottomRight,
-            padding: EdgeInsets.all(50),
-            decoration: BoxDecoration(),
-            child:
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.black,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              AnimatedOpacity(
+                duration: Duration(seconds: 1),
+                opacity: _opacity,
+                child: Container(
+                  alignment: Alignment.bottomRight,
+                  padding: EdgeInsets.all(50),
+                  decoration: BoxDecoration(),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                    ),
+                    onPressed: () {
+                      _timer.cancel();
+                      _controller.dispose();
+                      Navigator.pushReplacementNamed(context, HomePage.id);
+                    },
+                    child: Text(
+                      "Play",
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
               ),
-              onPressed: () {
-                _controller.dispose();
-                Navigator.pushReplacementNamed(context, HomePage.id);
-              },
-              child: Text(
-                "Play",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+              SizedBox(height: 50,),
+            ],
           ),
         ],
       ),
     );
   }
 }
-
-

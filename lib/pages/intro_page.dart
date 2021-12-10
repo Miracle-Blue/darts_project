@@ -78,7 +78,6 @@ class _IntroPageState extends State<IntroPage> {
                 child: Container(
                   alignment: Alignment.bottomRight,
                   padding: EdgeInsets.all(50),
-                  decoration: BoxDecoration(),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       primary: Colors.black,

@@ -309,6 +309,7 @@ class _GamePageState extends State<GamePage> {
   Widget addListItem(List list, int index) {
     return Expanded(
         child: Text(
+          // qo'shish
           "${list.length >= index + 1 ? list[index] : ""}",
           style: _GamePageState._textStyle(13),
         ));
@@ -326,4 +327,15 @@ class _GamePageState extends State<GamePage> {
     );
   }
 
+  void _showDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+
+        );
+      }
+    );
+  }
 }

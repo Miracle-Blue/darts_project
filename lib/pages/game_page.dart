@@ -20,9 +20,9 @@ class _GamePageState extends State<GamePage> {
   double sizeH = 120.0;
   double ra = 0;
   double dartRanX =
-      0.2; //pow(-1, Random().nextInt(10)) * Random().nextDouble();
+      0.7; //pow(-1, Random().nextInt(10)) * Random().nextDouble();
   double dartRanY =
-      -0.5; //+ pow(-1, Random().nextInt(10)) * Random().nextDouble();
+      -0.75; //+ pow(-1, Random().nextInt(10)) * Random().nextDouble();
   int index = 1;
   int point = 15;
 
@@ -92,203 +92,217 @@ class _GamePageState extends State<GamePage> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
-          width: width,
-          height: height,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/back_2.jpg"),
-              fit: BoxFit.cover,
+    return Scaffold(
+        body: SafeArea(
+          child: Container(
+            width: width,
+            height: height,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/back_2.jpg"),
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          child: Stack(children: [
-            Column(
-              children: [
-                SizedBox(
-                  height: 25,
-                ),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 5,
-                    ),
-                    OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        minimumSize: Size(30, 30),
-                        backgroundColor: Color.fromRGBO(245, 75, 21, 1),
-                        side: BorderSide(color: Colors.grey, width: 0),
-                      ),
-                      onPressed: () {
-                        SystemNavigator.pop();
-                      },
-                      child: Image(
-                        color: Colors.white,
-                        width: 15,
-                        height: 15,
-                        image: AssetImage("assets/images/back_icon_2.png"),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Expanded(
-                      child: Container(
-                        height: 30,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.topRight,
-                            colors: [
-                              Color.fromRGBO(240, 12, 12, 0.92),
-                              Color.fromRGBO(241, 153, 21, 0.7268)
-                            ],
-                          ),
-                        ),
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              "Score  :",
-                              style: _textStyle(13),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            addListItem(list, 1),
-                            addListItem(list, 2),
-                            addListItem(list, 3),
-                            addListItem(list, 4),
-                            addListItem(list, 5),
-                            addListItem(list, 6),
-                            addListItem(list, 7),
-                            addListItem(list, 8),
-                            addListItem(list, 9),
-                            addListItem(list, 10),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                  ],
-                ),
-                Image(
-                  image: AssetImage('assets/images/darts_table.png'),
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Container(
-                    margin: EdgeInsets.only(right: 10),
-                    height: 30,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      gradient: LinearGradient(
-                        colors: [
-                          Color.fromRGBO(240, 12, 12, 0.92),
-                          Color.fromRGBO(241, 153, 21, 0.7268)
-                        ],
-                      ),
-                    ),
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          "Total  :  ",
-                          style: _textStyle(13),
-                        ),
-                        Expanded(
-                            child: Text(
-                          "${list.reduce((value, element) => value + element) - 15}",
-                          style: _textStyle(13),
-                        )),
-                      ],
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 5,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.end,
+            child: Stack(children: [
+              Center(
+                child: Container(
+                  height: 800,
+                  width: 400,
+                  child: Stack(
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Color.fromRGBO(240, 30, 12, 0.92),
-                              Color.fromRGBO(240, 100, 12, 0.80)
-                            ],
-                          ),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        margin: EdgeInsets.all(10),
-                        height: 300,
-                        width: 60,
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: 5,
-                            ),
-                            addListDartsArrow(list, 1),
-                            addListDartsArrow(list, 2),
-                            addListDartsArrow(list, 3),
-                            addListDartsArrow(list, 4),
-                            addListDartsArrow(list, 5),
-                            addListDartsArrow(list, 6),
-                            addListDartsArrow(list, 7),
-                            addListDartsArrow(list, 8),
-                            addListDartsArrow(list, 9),
-                            addListDartsArrow(list, 10),
-                            SizedBox(
-                              height: 5,
-                            ),
-                          ],
+                      Padding(
+                        padding: const EdgeInsets.only(top: 70.0),
+                        child: Image(
+                          image: AssetImage('assets/images/darts_table.png'),
                         ),
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          shoot();
-                        },
+                      Container(
+                        alignment: Alignment(dartX, dartY),
                         child: Container(
-                          margin: EdgeInsets.all(10),
-                          child: Image(
-                            height: 80,
-                            width: 80,
-                            color: Colors.yellow,
-                            image: AssetImage("assets/images/throw_icon.png"),
-                          ),
+                          child: Image.asset("assets/images/dart1.png"),
+                          width: 120,
+                          height: 120,
                         ),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
-              ],
-            ),
-            Container(
-              alignment: Alignment(dartX, dartY),
-              child: Container(
-                child: Image.asset("assets/images/dart1.png"),
-                width: 120,
-                height: 120,
               ),
+              Column(
+                children: [
+                  SizedBox(
+                    height: 25,
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 5,
+                      ),
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          minimumSize: Size(30, 30),
+                          backgroundColor: Color.fromRGBO(245, 75, 21, 1),
+                          side: BorderSide(color: Colors.grey, width: 0),
+                        ),
+                        onPressed: () {
+                          SystemNavigator.pop();
+                        },
+                        child: Image(
+                          color: Colors.white,
+                          width: 15,
+                          height: 15,
+                          image: AssetImage("assets/images/back_icon_2.png"),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(
+                        child: Container(
+                          height: 30,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.topRight,
+                              colors: [
+                                Color.fromRGBO(240, 12, 12, 0.92),
+                                Color.fromRGBO(241, 153, 21, 0.7268)
+                              ],
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                "Score  :",
+                                style: _textStyle(13),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              addListItem(list, 1),
+                              addListItem(list, 2),
+                              addListItem(list, 3),
+                              addListItem(list, 4),
+                              addListItem(list, 5),
+                              addListItem(list, 6),
+                              addListItem(list, 7),
+                              addListItem(list, 8),
+                              addListItem(list, 9),
+                              addListItem(list, 10),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                    ],
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Container(
+                      margin: EdgeInsets.only(right: 10),
+                      height: 30,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        gradient: LinearGradient(
+                          colors: [
+                            Color.fromRGBO(240, 12, 12, 0.92),
+                            Color.fromRGBO(241, 153, 21, 0.7268)
+                          ],
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "Total  :  ",
+                            style: _textStyle(13),
+                          ),
+                          Expanded(
+                              child: Text(
+                            "${list.reduce((value, element) => value + element) - 15}",
+                            style: _textStyle(13),
+                          )),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 5,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Color.fromRGBO(240, 30, 12, 0.92),
+                                Color.fromRGBO(240, 100, 12, 0.80)
+                              ],
+                            ),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          margin: EdgeInsets.all(10),
+                          height: 300,
+                          width: 60,
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 5,
+                              ),
+                              addListDartsArrow(list, 1),
+                              addListDartsArrow(list, 2),
+                              addListDartsArrow(list, 3),
+                              addListDartsArrow(list, 4),
+                              addListDartsArrow(list, 5),
+                              addListDartsArrow(list, 6),
+                              addListDartsArrow(list, 7),
+                              addListDartsArrow(list, 8),
+                              addListDartsArrow(list, 9),
+                              addListDartsArrow(list, 10),
+                              SizedBox(
+                                height: 5,
+                              ),
+                            ],
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            shoot();
+                          },
+                          child: Container(
+                            margin: EdgeInsets.all(10),
+                            child: Image(
+                              height: 80,
+                              width: 80,
+                              color: Colors.yellow,
+                              image: AssetImage("assets/images/throw_icon.png"),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                ],
+              ),
+              ]
             ),
-          ]),
+          ),
         ),
-      ),
     );
   }
 

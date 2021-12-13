@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:darts/pages/BouncyPageRoute.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:math';
@@ -51,6 +52,7 @@ class _GamePageState extends State<GamePage> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
+    print(height);
     double width = MediaQuery.of(context).size.width;
     x = (width) / height;
 
@@ -393,7 +395,7 @@ class _GamePageState extends State<GamePage> {
                         primary: Color.fromRGBO(232, 175, 31, 0.8),
                       ),
                       onPressed: () {
-                        Navigator.pushReplacementNamed(context, GamePage.id);
+                        Navigator.push(context, BouncyPageRoute(widget: GamePage()));
                       },
                       child: Icon(Icons.refresh),
                     ),

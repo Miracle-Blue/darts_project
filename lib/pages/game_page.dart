@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:math';
 
+import 'package:google_fonts/google_fonts.dart';
+
 class GamePage extends StatefulWidget {
   const GamePage({Key? key}) : super(key: key);
 
@@ -309,7 +311,6 @@ class _GamePageState extends State<GamePage> {
   Widget addListItem(List list, int index) {
     return Expanded(
         child: Text(
-          // qo'shish
           "${list.length >= index + 1 ? list[index] : ""}",
           style: _GamePageState._textStyle(13),
         ));
@@ -333,7 +334,33 @@ class _GamePageState extends State<GamePage> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-
+          backgroundColor: Colors.blue,
+          title: Center(
+            child: Text(
+              "Your Score",
+              style: GoogleFonts.mcLaren(
+                color: Colors.white
+              ),
+            ),
+          ),
+          actions: [
+            GestureDetector(
+              onTap: () => Navigator.pushReplacementNamed(context, GamePage.id),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(5),
+                child: Container(
+                  padding: EdgeInsets.all(7),
+                  color: Colors.white,
+                  child: Text(
+                    "Play Again",
+                    style: GoogleFonts.mcLaren(
+                      color: Colors.blue,
+                    ),
+                  ),
+                ),
+              ),
+            )
+          ],
         );
       }
     );

@@ -1,3 +1,4 @@
+import 'package:darts/pages/BouncyPageRoute.dart';
 import 'package:darts/pages/game_page.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
@@ -84,12 +85,16 @@ class _IntroPageState extends State<IntroPage> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                     ),
                     onPressed: () {
                       _timer.cancel();
                       _controller.dispose();
-                      Navigator.pushReplacementNamed(context, GamePage.id);
+                      Navigator.push(
+                          context,
+                          BouncyPageRoute(widget: GamePage())
+                      );
                     },
                     child: Text(
                       "Play",
@@ -101,7 +106,9 @@ class _IntroPageState extends State<IntroPage> {
                   ),
                 ),
               ),
-              SizedBox(height: 50,),
+              SizedBox(
+                height: 50,
+              ),
             ],
           ),
         ],

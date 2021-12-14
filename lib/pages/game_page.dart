@@ -366,10 +366,6 @@ class _GamePageState extends State<GamePage> {
               ((Random().nextInt(5)) / 10) * pow(-1, Random().nextInt(10));
           targetY = ((Random().nextInt(5) + 2) / 10) * (-1);
           ra = sqrt(pow(((0) - (targetX)), 2) + pow(((-0.45) - (targetY)), 2));
-          print(ra);
-          print(dartX);
-          print(dartY);
-          print(1 / x);
           if (ra <= 0.09) {
             p = 10;
             scoreAddFunction(10);

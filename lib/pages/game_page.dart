@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:math';
 
+import 'BouncyPageRoute.dart';
+
 class GamePage extends StatefulWidget {
   const GamePage({Key? key}) : super(key: key);
 
@@ -297,6 +299,8 @@ class _GamePageState extends State<GamePage> {
                         onTap: () async {
                           shoot();
                           await waiting();
+                          if (list.length == 10) _showDialog();
+                          await waiting();
                         },
                         child: Container(
                           margin: EdgeInsets.all(10),
@@ -400,7 +404,7 @@ class _GamePageState extends State<GamePage> {
   }
 
   waiting() async {
-    Timer(Duration(seconds: 2), () {
+    Timer(Duration(milliseconds: 800), () {
       setState(() {
         dartX = 0;
         dartY = 1;
@@ -409,5 +413,78 @@ class _GamePageState extends State<GamePage> {
         sizeHeight = 130;
       });
     });
+  }
+
+  void _showDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return Stack(
+          children: [
+            SimpleDialog(
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              backgroundColor: Color.fromRGBO(232, 175, 31, 0.53),
+              children: [
+                SizedBox(
+                  height: 70,
+                ),
+                Center(
+                    child: Text(
+                      "TOTAL",
+                      style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                    )),
+                Center(
+                    child: Text(
+                      "${list.reduce((value, element) => value + element) - 15}",
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                    )),
+                SizedBox(
+                  height: 30,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Color.fromRGBO(232, 175, 31, 0.8),
+                      ),
+                      onPressed: () {
+                        SystemNavigator.pop();
+                      },
+                      child: Icon(Icons.arrow_back),
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Color.fromRGBO(232, 175, 31, 0.8),
+                      ),
+                      onPressed: () {
+                        Navigator.push(context, BouncyPageRoute(widget: GamePage()));
+                      },
+                      child: Icon(Icons.refresh),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 70,//sfdg
+                ),
+              ],
+            ),
+            Center(
+                heightFactor: 2,
+                child: Image(
+                    height: 180,
+                    width: 180,
+                    image: AssetImage("assets/images/final_darts_table.png"))),
+          ],
+        );
+      },
+    );
   }
 }

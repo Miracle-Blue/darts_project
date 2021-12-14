@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:math';
-
 import 'BouncyPageRoute.dart';
 
 class GamePage extends StatefulWidget {
@@ -21,7 +20,7 @@ class _GamePageState extends State<GamePage> {
   double sizeHeight = 130;
   double sizeWeight = 130;
 
-  late double targetX=0;
+  late double targetX = 0;
   late double targetY;
 
   double ra = 0;
@@ -30,9 +29,34 @@ class _GamePageState extends State<GamePage> {
   late double x;
 
   List list = [];
+  int _counter = 500;
+  late Timer _timer;
+
+  bool isTapped = false;
+
+  void startTimer() {
+      _counter = 500;
+    _timer = Timer.periodic(Duration(milliseconds: 1), (timer) {
+      if(_counter >= 1) {
+        setState(() {
+          _counter--;
+        });
+      } else {
+        if (list.length == 11) {
+          _showDialog();
+        }
+        _timer.cancel();
+        setState(() {
+          isTapped = false;
+        });
+      }
+    });
+  }
 
   void scoreAddFunction(int a) {
-    list.add(a);
+    if (list.length <= 10) {
+      list.add(a);
+    }
   }
 
   @override
@@ -89,7 +113,7 @@ class _GamePageState extends State<GamePage> {
                               )),
                           CircleAvatar(
                             radius: 120,
-                            backgroundColor: Colors.yellow,
+                            backgroundColor: Colors.white,
                           ),
                           Positioned(
                               top: 30,
@@ -295,23 +319,37 @@ class _GamePageState extends State<GamePage> {
                           ],
                         ),
                       ),
-                      GestureDetector(
-                        onTap: () async {
-                          shoot();
-                          await waiting();
-                          if (list.length == 10) _showDialog();
-                          await waiting();
-                        },
-                        child: Container(
-                          margin: EdgeInsets.all(10),
-                          child: Image(
-                            height: 80,
-                            width: 80,
-                            color: Colors.yellow,
-                            image: AssetImage("assets/images/throw_icon.png"),
-                          ),
-                        ),
-                      ),
+                      isTapped
+                          ? Container(
+                              margin: EdgeInsets.all(10),
+                              child: Image(
+                                height: 80,
+                                width: 80,
+                                color: Colors.yellow,
+                                image:
+                                AssetImage("assets/images/throw_icon.png"),
+                              ),
+                            )
+                          : GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  isTapped = true;
+                                });
+                                startTimer();
+                                shoot();
+                                waiting();
+                              },
+                              child: Container(
+                                margin: EdgeInsets.all(10),
+                                child: Image(
+                                  height: 80,
+                                  width: 80,
+                                  color: Colors.yellow,
+                                  image: AssetImage(
+                                      "assets/images/throw_icon.png"),
+                                ),
+                              ),
+                            ),
                     ],
                   ),
                 ),
@@ -348,12 +386,12 @@ class _GamePageState extends State<GamePage> {
 
   bool stop = false;
 
-  void shoot() async {
+  void shoot() {
     stop = true;
 
-    Timer.periodic(const Duration(milliseconds: 10), (timer) async {
+    Timer.periodic(const Duration(milliseconds: 10), (timer) {
       setState(() {
-       dartY -= 0.08;
+        dartY -= 0.08;
         sizeHeight -= 2;
         sizeWeight -= 2;
 
@@ -399,7 +437,7 @@ class _GamePageState extends State<GamePage> {
     });
   }
 
-  waiting() async {
+  waiting() {
     Timer(Duration(milliseconds: 800), () {
       setState(() {
         dartX = 0;
@@ -429,15 +467,17 @@ class _GamePageState extends State<GamePage> {
                   height: 70,
                 ),
                 Center(
-                    child: Text(
-                      "TOTAL",
-                      style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
-                    )),
+                  child: Text(
+                    "TOTAL",
+                    style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                  ),
+                ),
                 Center(
-                    child: Text(
-                      "${list.reduce((value, element) => value + element) - 15}",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                    )),
+                  child: Text(
+                    "${list.reduce((value, element) => value + element) - 15}",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                  ),
+                ),
                 SizedBox(
                   height: 30,
                 ),
@@ -451,7 +491,7 @@ class _GamePageState extends State<GamePage> {
                       onPressed: () {
                         SystemNavigator.pop();
                       },
-                      child: Icon(Icons.arrow_back),
+                      child: Image(image: AssetImage("assets/images/exit_img.png"),height: 20, width: 20,),
                     ),
                     SizedBox(
                       width: 20,
@@ -461,23 +501,26 @@ class _GamePageState extends State<GamePage> {
                         primary: Color.fromRGBO(232, 175, 31, 0.8),
                       ),
                       onPressed: () {
-                        Navigator.push(context, BouncyPageRoute(widget: GamePage()));
+                        Navigator.push(
+                            context, BouncyPageRoute(widget: GamePage()));
                       },
-                      child: Icon(Icons.refresh),
+                      child: Icon(Icons.refresh, color: Colors.black,),
                     ),
                   ],
                 ),
                 SizedBox(
-                  height: 70,//sfdg
+                  height: 70,
                 ),
               ],
             ),
             Center(
-                heightFactor: 2,
-                child: Image(
-                    height: 180,
-                    width: 180,
-                    image: AssetImage("assets/images/final_darts_table.png"))),
+              heightFactor: 2,
+              child: Image(
+                height: 180,
+                width: 180,
+                image: AssetImage("assets/images/final_darts_table.png"),
+              ),
+            ),
           ],
         );
       },

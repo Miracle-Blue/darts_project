@@ -16,6 +16,7 @@ class IntroPage extends StatefulWidget {
 class _IntroPageState extends State<IntroPage> {
   late VideoPlayerController _controller;
   double _opacity = 0;
+  // ss
   late Timer _timer;
 
   void startTimer() {

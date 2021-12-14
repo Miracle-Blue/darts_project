@@ -27,7 +27,6 @@ flutter:
   assets:
     - assets/images/
     - assets/videos/
-    - lib/image/
 
 
   # fonts:

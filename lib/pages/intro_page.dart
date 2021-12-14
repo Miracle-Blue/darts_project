@@ -108,8 +108,10 @@ class _IntroPageState extends State<IntroPage> {
                 ),
               ),
               SizedBox(
-                height: 50,
+                height: 30,
               ),
+              Center(child: Text("Powered by\nFlutter Team")),
+              SizedBox(height: 20,),
             ],
           ),
         ],

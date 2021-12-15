@@ -29,13 +29,13 @@ class _GamePageState extends State<GamePage> {
   late double x;
 
   List list = [];
-  int _counter = 500;
+  int _counter = 400;
   late Timer _timer;
 
   bool isTapped = false;
 
   void startTimer() {
-      _counter = 500;
+      _counter = 400;
     _timer = Timer.periodic(Duration(milliseconds: 1), (timer) {
       if(_counter >= 1) {
         setState(() {

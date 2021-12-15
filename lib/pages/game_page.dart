@@ -124,7 +124,7 @@ class _GamePageState extends State<GamePage> {
                               )),
                           CircleAvatar(
                             radius: 90,
-                            backgroundColor: Colors.red,
+                            backgroundColor: Colors.black,
                           ),
                           Positioned(
                               top: 60,
@@ -135,7 +135,7 @@ class _GamePageState extends State<GamePage> {
                               )),
                           CircleAvatar(
                             radius: 60,
-                            backgroundColor: Colors.white,
+                            backgroundColor: Colors.yellow,
                           ),
                           Positioned(
                               top: 93,
@@ -146,7 +146,7 @@ class _GamePageState extends State<GamePage> {
                               )),
                           CircleAvatar(
                             radius: 30,
-                            backgroundColor: Colors.blue,
+                            backgroundColor: Colors.black,
                           ),
                           Positioned(
                               top: 135,
@@ -527,4 +527,4 @@ class _GamePageState extends State<GamePage> {
     );
   }
 }
-// app
+

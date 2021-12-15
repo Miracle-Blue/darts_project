@@ -28,7 +28,7 @@ class _GamePageState extends State<GamePage> {
   int p = 15;
   late double x;
 
-  List list = [];
+  List list = [15];
   int _counter = 250;
   int _scoreController = 100;
   late Timer _timer;
@@ -37,24 +37,24 @@ class _GamePageState extends State<GamePage> {
   bool isTapped = false;
 
   void scoreAddFunction(int a) {
-    _scoreController = 100;
-    _timer1 = Timer.periodic(Duration(microseconds: 1), (timer) {
-      if(_scoreController >= 1) {
-        setState(() {
-          _scoreController--;
-        });
-      } else {
-        if (list.length <= 10) {
-          list.add(a);
+      _scoreController = 100;
+      _timer1 = Timer.periodic(Duration(milliseconds: 1), (timer) {
+        if(_scoreController >= 1) {
+            setState(() {
+              _scoreController--;
+            });
+        } else {
+          if (list.length <= 10) {
+              list.add(a);
+          }
+          _timer1.cancel();
         }
-        _timer1.cancel();
-      }
-    });
+      });
   }
 
   void startTimer() {
       _counter = 250;
-    _timer = Timer.periodic(Duration(milliseconds: 1), (timer1) {
+    _timer = Timer.periodic(Duration(milliseconds: 1), (timer) {
       if(_counter >= 1) {
         setState(() {
           _counter--;
@@ -69,13 +69,6 @@ class _GamePageState extends State<GamePage> {
         });
       }
     });
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    scoreAddFunction(p);
   }
 
   static TextStyle _textStyle(double size) {
